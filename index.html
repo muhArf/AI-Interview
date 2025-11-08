@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Interview Assessment</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Icon dari CDN untuk tampilan profesional -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- SIDEBAR NAVIGATION - Menu navigasi di sebelah kiri -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <!-- Logo dan judul aplikasi -->
+            <div class="logo">
+                <i class="fas fa-brain"></i>
+                <h2>AI Interview</h2>
+            </div>
+            <!-- Tombol toggle untuk mobile -->
+            <button class="toggle-btn" id="toggleBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
+        <!-- Menu navigasi -->
+        <ul class="nav-menu">
+            <li class="nav-item active" data-step="data-diri">
+                <i class="fas fa-user"></i>
+                <span>Data Diri</span>
+            </li>
+            <li class="nav-item" data-step="upload-video">
+                <i class="fas fa-video"></i>
+                <span>Upload Video</span>
+            </li>
+            <li class="nav-item" data-step="evaluasi">
+                <i class="fas fa-spinner"></i>
+                <span>Evaluasi</span>
+            </li>
+            <li class="nav-item" data-step="hasil">
+                <i class="fas fa-chart-bar"></i>
+                <span>Hasil</span>
+            </li>
+        </ul>
+        
+        <!-- Progress indicator -->
+        <div class="progress-indicator">
+            <div class="progress-text">Progress</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="progress-percent" id="progressPercent">0%</div>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT AREA - Area konten utama -->
+    <main class="main-content">
+        <!-- Header dengan informasi user -->
+        <header class="top-header">
+            <h1 id="pageTitle">Selamat Datang di AI Interview Assessment</h1>
+            <div class="user-info">
+                <i class="fas fa-user-circle"></i>
+                <span id="userName">Kandidat</span>
+            </div>
+        </header>
+
+        <!-- SECTION 1: FORM DATA DIRI -->
+        <section class="content-section active" id="section-data-diri">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-user-edit"></i>
+                    <h2>Data Diri Kandidat</h2>
+                </div>
+                <div class="card-body">
+                    <p class="info-text">Silakan lengkapi data diri Anda untuk memulai AI Interview Assessment</p>
+                    
+                    <!-- Form input data kandidat -->
+                    <form id="formDataDiri" class="form-container">
+                        <div class="form-group">
+                            <label for="namaKandidat">
+                                <i class="fas fa-user"></i> Nama Lengkap
+                            </label>
+                            <input 
+                                type="text" 
+                                id="namaKandidat" 
+                                name="namaKandidat" 
+                                placeholder="Masukkan nama lengkap Anda"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="emailKandidat">
+                                <i class="fas fa-envelope"></i> Email
+                            </label>
+                            <input 
+                                type="email" 
+                                id="emailKandidat" 
+                                name="emailKandidat" 
+                                placeholder="nama@email.com"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">
+                                Lanjutkan <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: UPLOAD VIDEO -->
+        <section class="content-section" id="section-upload-video">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-video"></i>
+                    <h2>Upload Video Interview</h2>
+                </div>
+                <div class="card-body">
+                    <p class="info-text">Upload video jawaban Anda untuk setiap pertanyaan interview</p>
+                    
+                    <!-- Container untuk daftar pertanyaan -->
+                    <div id="questionContainer" class="question-container">
+                        <!-- Pertanyaan 1 -->
+                        <div class="question-card">
+                            <div class="question-header">
+                                <span class="question-number">Pertanyaan 1</span>
+                                <span class="status-badge pending">Belum Upload</span>
+                            </div>
+                            <div class="question-text">
+                                <p>Can you share any specific challenges you faced while working on certification and how you overcame them?</p>
+                            </div>
+                            <div class="upload-area">
+                                <input 
+                                    type="file" 
+                                    id="video1" 
+                                    accept="video/*" 
+                                    class="file-input"
+                                >
+                                <label for="video1" class="upload-label">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <span>Klik untuk upload video</span>
+                                    <small>Format: MP4, MOV, AVI (Max: 100MB)</small>
+                                </label>
+                                <div class="file-info" style="display: none;">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span class="file-name"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pertanyaan 2 -->
+                        <div class="question-card">
+                            <div class="question-header">
+                                <span class="question-number">Pertanyaan 2</span>
+                                <span class="status-badge pending">Belum Upload</span>
+                            </div>
+                            <div class="question-text">
+                                <p>Can you describe your experience with transfer learning in TensorFlow? How did it benefit your projects?</p>
+                            </div>
+                            <div class="upload-area">
+                                <input 
+                                    type="file" 
+                                    id="video2" 
+                                    accept="video/*" 
+                                    class="file-input"
+                                >
+                                <label for="video2" class="upload-label">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <span>Klik untuk upload video</span>
+                                    <small>Format: MP4, MOV, AVI (Max: 100MB)</small>
+                                </label>
+                                <div class="file-info" style="display: none;">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span class="file-name"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pertanyaan 3 -->
+                        <div class="question-card">
+                            <div class="question-header">
+                                <span class="question-number">Pertanyaan 3</span>
+                                <span class="status-badge pending">Belum Upload</span>
+                            </div>
+                            <div class="question-text">
+                                <p>Ceritakan pengalaman Anda dalam menyelesaikan masalah yang kompleks?</p>
+                            </div>
+                            <div class="upload-area">
+                                <input 
+                                    type="file" 
+                                    id="video3" 
+                                    accept="video/*" 
+                                    class="file-input"
+                                >
+                                <label for="video3" class="upload-label">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <span>Klik untuk upload video</span>
+                                    <small>Format: MP4, MOV, AVI (Max: 100MB)</small>
+                                </label>
+                                <div class="file-info" style="display: none;">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span class="file-name"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" onclick="navigateToStep('data-diri')">
+                            <i class="fas fa-arrow-left"></i> Kembali
+                        </button>
+                        <button type="button" id="btnSubmitVideos" class="btn btn-primary" disabled>
+                            Submit Video <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: EVALUASI (LOADING) -->
+        <section class="content-section" id="section-evaluasi">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-cogs"></i>
+                    <h2>Proses Evaluasi</h2>
+                </div>
+                <div class="card-body text-center">
+                    <div class="loading-container">
+                        <div class="loading-spinner"></div>
+                        <h3>AI sedang menganalisis video interview Anda...</h3>
+                        <p class="info-text">Proses ini membutuhkan waktu beberapa menit. Mohon tunggu.</p>
+                        
+                        <!-- Simulasi progress evaluasi -->
+                        <div class="evaluation-steps">
+                            <div class="eval-step active">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Memproses Video</span>
+                            </div>
+                            <div class="eval-step">
+                                <i class="fas fa-circle"></i>
+                                <span>Analisis Komunikasi</span>
+                            </div>
+                            <div class="eval-step">
+                                <i class="fas fa-circle"></i>
+                                <span>Evaluasi Jawaban</span>
+                            </div>
+                            <div class="eval-step">
+                                <i class="fas fa-circle"></i>
+                                <span>Membuat Laporan</span>
+                            </div>
+                        </div>
+
+                        <!-- Tombol simulasi (untuk testing) -->
+                        <button type="button" class="btn btn-primary" onclick="simulateEvaluation()" style="margin-top: 30px;">
+                            Simulasi Selesai Evaluasi
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: HASIL EVALUASI -->
+        <section class="content-section" id="section-hasil">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-trophy"></i>
+                    <h2>Hasil Evaluasi Interview</h2>
+                </div>
+                <div class="card-body">
+                    <!-- Status Kelulusan -->
+                    <div class="result-status" id="resultStatus">
+                        <!-- Status akan diisi dengan JavaScript: lulus atau tidak lulus -->
+                    </div>
+
+                    <!-- Skor dan Detail -->
+                    <div class="result-details">
+                        <div class="score-card">
+                            <div class="score-label">Skor Total</div>
+                            <div class="score-value" id="totalScore">85</div>
+                            <div class="score-max">/ 100</div>
+                        </div>
+
+                        <div class="scores-breakdown">
+                            <div class="score-item">
+                                <span class="score-label">Komunikasi</span>
+                                <div class="score-bar">
+                                    <div class="score-bar-fill" style="width: 90%"></div>
+                                </div>
+                                <span class="score-number">90/100</span>
+                            </div>
+                            <div class="score-item">
+                                <span class="score-label">Kepercayaan Diri</span>
+                                <div class="score-bar">
+                                    <div class="score-bar-fill" style="width: 85%"></div>
+                                </div>
+                                <span class="score-number">85/100</span>
+                            </div>
+                            <div class="score-item">
+                                <span class="score-label">Relevansi Jawaban</span>
+                                <div class="score-bar">
+                                    <div class="score-bar-fill" style="width: 80%"></div>
+                                </div>
+                                <span class="score-number">80/100</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Laporan Detail -->
+                    <div class="report-section">
+                        <h3><i class="fas fa-file-alt"></i> Laporan Lengkap</h3>
+                        <div class="report-content">
+                            <p><strong>Kekuatan:</strong></p>
+                            <ul>
+                                <li>Komunikasi yang jelas dan artikulatif</li>
+                                <li>Menunjukkan antusiasme tinggi terhadap posisi</li>
+                                <li>Memberikan contoh konkret dari pengalaman</li>
+                            </ul>
+                            <p><strong>Area untuk Pengembangan:</strong></p>
+                            <ul>
+                                <li>Dapat lebih detail dalam menjelaskan pencapaian</li>
+                                <li>Pertimbangkan untuk menambah contoh kuantitatif</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Sertifikat Section (hanya muncul jika lulus) -->
+                    <div class="certificate-section" id="certificateSection" style="display: none;">
+                        <div class="certificate-card">
+                            <i class="fas fa-certificate"></i>
+                            <h3>Selamat! Anda Lulus Interview</h3>
+                            <p>Sertifikat kelulusan Anda telah tersedia</p>
+                            <button class="btn btn-success" onclick="downloadCertificate()">
+                                <i class="fas fa-download"></i> Download Sertifikat
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Aksi -->
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" onclick="resetAssessment()">
+                            <i class="fas fa-redo"></i> Mulai Ulang
+                        </button>
+                        <button type="button" class="btn btn-primary" onclick="downloadReport()">
+                            <i class="fas fa-download"></i> Download Laporan PDF
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- JavaScript untuk fungsi interaktif -->
+    <script src="script.js"></script>
+</body>
+</html>
